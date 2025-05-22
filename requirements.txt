@@ -1,0 +1,17 @@
+# FastAPI backend
+fastapi
+uvicorn[standard]
+motor
+pydantic
+python-jose[cryptography]
+passlib[bcrypt]
+python-dotenv
+python-multipart
+pydantic[email]
+# For Excel export
+openpyxl
+
+# Frontend with Streamlit
+streamlit
+requests
+
