@@ -1,8 +1,15 @@
+version: "3.9"
+
 services:
   backend:
     build:
       context: .
       dockerfile: backend/Dockerfile
+    container_name: budgettracker-backend
+    restart: unless-stopped
+    environment:
+      MONGO_URL: ${MONGO_URL}
+      DB_NAME: ${DB_NAME:-BudgetTracker}
     ports:
       - "8000:8000"
 
@@ -10,5 +17,11 @@ services:
     build:
       context: .
       dockerfile: frontend/Dockerfile
+    container_name: budgettracker-frontend
+    restart: unless-stopped
+    environment:
+      API_URL: ${API_URL:-http://backend:8000/auth}
+    depends_on:
+      - backend
     ports:
       - "8501:8501"

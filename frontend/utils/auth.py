@@ -1,6 +1,7 @@
+import os
 import requests
 
-API_URL = "http://localhost:8000/auth"
+API_URL = os.getenv("API_URL", "http://localhost:8000/auth")
 
 def register(email, password):
     response = requests.post(f"{API_URL}/register", json={"email": email, "password": password})
